@@ -1,0 +1,35 @@
+<h1>Editing game</h1>
+
+<% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg, class: name %>
+<% end -%>
+
+
+<!--START-->
+<%= form_for @game do |f| %>
+    <h3>Label:</h3>
+   <!-- <%= f.label :name %> --><%= f.text_field :name %>
+    <h3>Scores:</h3>
+
+    <%= f.fields_for(:levels) do |level_form| %>
+        <!--<%= level_form.label :score %>-->
+        <%= level_form.text_field :score %>
+        </br>
+    <% end %>
+
+    <%= f.submit "Store Result"%>
+<% end %>
+           <!--END-->
+
+<p><div style="float: left; width: auto;">
+<%= button_to "Add Level",
+              :action => 'add_level',
+              :id =>@game
+              %></div>
+<%= button_to "Remove Level",
+              :action => 'remove_level',
+              :id =>@game
+%> </p>
+
+<!--<%= link_to 'Show', @game %>-->
+<%= link_to 'Back', games_path %>

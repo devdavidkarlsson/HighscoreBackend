@@ -1,0 +1,36 @@
+<% unless user_signed_in? -%>
+    <p><%= link_to 'Sign up as User', new_user_registration_path %></p>
+    <p><%= link_to 'Sign in as User', new_user_session_path %></p>
+<% end -%>
+<% if user_signed_in? -%>
+
+<h1>Listing games</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Games:</th>
+      <th>Played at:</th>
+      <th>Actions:</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.name %></td>
+        <td><%= game.created_at.to_formatted_s(:short) %></td>
+
+        <!--<td><%= button_to "Show", (game), :class => "button", :method => :get %></td>     -->
+        <td><%= button_to "Show", edit_game_path(game), :class => "button", :method => :get %></td>
+        <td><%= button_to "Delete", game, :method=>:delete, :class=>:destroy, :confirm => 'Are you sure?'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game', new_game_path %>
+ <%end%>

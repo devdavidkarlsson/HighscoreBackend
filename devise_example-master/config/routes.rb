@@ -10,6 +10,7 @@ DeviseExample::Application.routes.draw do
   post 'games/add_level'
   post 'games/remove_level'
   post 'games/save_scores'
+  get '/stats/topofday'
 
 
   resources :home, only: :index

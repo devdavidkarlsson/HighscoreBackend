@@ -1,8 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game,:initialize, only: [:show, :edit, :update, :destroy]
 
-
-
   attr_reader :levels
 
 

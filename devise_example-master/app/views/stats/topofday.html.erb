@@ -1,0 +1,15 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<h1>Daily Highscores:</h1>
+<h2>You:</h2>
+
+
+<h3>Game Scores:</h3>
+<%= column_chart Level.group(:game_id).sum(:score) %>
+
+<h2>Everyone:</h2>
+<h3>Games:</h3>
+<%= line_chart Game.group_by_day(:created_at).count, :id => "users-chart", :height => "500px" %>
+
+<h3>New Users :</h3>
+
+<%= line_chart User.group_by_day(:created_at).count %>

@@ -52,4 +52,7 @@ gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-
+gem 'groupdate'
+gem "chartkick"
+gem 'pg'
+gem 'taps'

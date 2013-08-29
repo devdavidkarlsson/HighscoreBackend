@@ -1,18 +1,26 @@
 class HomeController < ApplicationController
+
   before_action :authenticate_user!, only: :token
 
   def token
+    render layout: 'application'
+
   end
 
   def initialize
     unless @game
       get_games
+
       #@levels = [] unless @levels
       #get_levels
     end
 
   end
 
+  def index
+    render layout: 'application'
+
+  end
 
 
 

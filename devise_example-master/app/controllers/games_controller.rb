@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+
   before_action :set_game,:initialize, only: [:show, :edit, :update, :destroy]
 
   attr_reader :levels
@@ -51,6 +52,8 @@ class GamesController < ApplicationController
   # GET /games.json
   def index
     @games = Game.where(:user_id=> current_user.id)
+    render layout: 'application'
+
   end
 
   # GET /games/1
@@ -60,6 +63,7 @@ class GamesController < ApplicationController
     respond_to do |format|
         format.html { redirect_to games_url(params[:id]) }
         format.json { render json: @levels}
+
     end
 
   end
@@ -71,11 +75,14 @@ class GamesController < ApplicationController
     @game.save
     @level = @game.levels.create(:game_id=>@game)
     @level.save
+    render layout: 'application'
+
   end
 
 
   # GET /games/1/edit
   def edit
+    render layout: 'application'
 
   end
 
